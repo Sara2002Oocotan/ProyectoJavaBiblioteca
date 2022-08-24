@@ -4,7 +4,7 @@ package controlbiblioteca.entidadesdenegocio;
 
 public class Autor {
     
-    private String id;
+    private int id;
     private String nombre;
     private String pais;
     private int top_aux;
@@ -20,17 +20,17 @@ public class Autor {
     public Autor() {
     }
 
-    public Autor(String id, String nombre, String pais) {
+    public Autor(int id, String nombre, String pais) {
         this.id = id;
         this.nombre = nombre;
         this.pais = pais;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
