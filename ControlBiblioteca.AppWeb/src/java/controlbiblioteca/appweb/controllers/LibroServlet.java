@@ -19,7 +19,7 @@ import controlbiblioteca.entidadesdenegocio.Editorial;
 import controlbiblioteca.entidadesdenegocio.Categoria;
 import controlbiblioteca.entidadesdenegocio.Libro;
 
-@WebServlet(name = "LibroServlet", urlPatterns = {"/Usuario"})
+@WebServlet(name = "LibroServlet", urlPatterns = {"/Libro"})
 public class LibroServlet extends HttpServlet {
     // <editor-fold defaultstate="collapsed" desc="Métodos para procesar las solicitudes get o post del Servlet">
 
@@ -50,7 +50,7 @@ public class LibroServlet extends HttpServlet {
             ArrayList< Libro> libros =  LibroDAL.buscarIncluirAEC(libro);
             request.setAttribute("libros", libros);
             request.setAttribute("top_aux", libro.getTop_aux());
-            request.getRequestDispatcher("Views/Usuario/index.jsp").forward(request, response);
+            request.getRequestDispatcher("Views/Libro/index.jsp").forward(request, response);
         } catch (Exception ex) {
             Utilidad.enviarError(ex.getMessage(), request, response);
         }
@@ -59,10 +59,10 @@ public class LibroServlet extends HttpServlet {
     private void doPostRequestIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
              Libro libro = obtenerLibro(request);
-            ArrayList< Libro> usuarios =  LibroDAL.buscarIncluirAEC(libro);
+            ArrayList< Libro> libros =  LibroDAL.buscarIncluirAEC(libro);
             request.setAttribute("libros", libro);
             request.setAttribute("top_aux", libro.getTop_aux());
-            request.getRequestDispatcher("Views/ Libro/index.jsp").forward(request, response);
+            request.getRequestDispatcher("Views/Libro/index.jsp").forward(request, response);
         } catch (Exception ex) {
             Utilidad.enviarError(ex.getMessage(), request, response);
         }
@@ -96,7 +96,7 @@ public class LibroServlet extends HttpServlet {
                Autor autor = new Autor();
                 autor.setId(libro_result.getIdAutor());
                 libro_result.setAutor(AutorDAL.obtenerPorId(autor));
-                request.setAttribute("ibro", libro_result);
+                request.setAttribute("libro", libro_result);
             } else {
                 Utilidad.enviarError("El Id:" + libro_result.getId() + " no existe en la tabla de Libro", request, response);
             }
@@ -107,7 +107,7 @@ public class LibroServlet extends HttpServlet {
 
     private void doGetRequestEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         requestObtenerPorId(request, response);
-        request.getRequestDispatcher("Views/Usuario/edit.jsp").forward(request, response);
+        request.getRequestDispatcher("Views/Libro/edit.jsp").forward(request, response);
     }
 
     private void doPostRequestEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -44,7 +44,7 @@ public class PrestamoServlet extends HttpServlet {
         try {
             Prestamo prestamo = new  Prestamo();
             prestamo.setTop_aux(10);
-            ArrayList<Prestamo> prestamos =  PrestamoDAL.buscarIncluirAEC(prestamo);
+            ArrayList<Prestamo> prestamos =  PrestamoDAL.buscarIncluirEL(prestamo);
             request.setAttribute("prestamos", prestamos);
             request.setAttribute("top_aux", prestamo.getTop_aux());
             request.getRequestDispatcher("Views/Prestamo/index.jsp").forward(request, response);
@@ -56,7 +56,7 @@ public class PrestamoServlet extends HttpServlet {
     private void doPostRequestIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Prestamo prestamo = obtenerPrestamo(request);
-            ArrayList< Prestamo> prestamos =  PrestamoDAL.buscarIncluirAEC(prestamo);
+            ArrayList< Prestamo> prestamos =  PrestamoDAL.buscarIncluirEL(prestamo);
             request.setAttribute("prestamos", prestamo);
             request.setAttribute("top_aux", prestamo.getTop_aux());
             request.getRequestDispatcher("Views/Prestamo/index.jsp").forward(request, response);

@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "CategoriaServlet", urlPatterns = {"/Editorial"})
+@WebServlet(name = "CategoriaServlet", urlPatterns = {"/Categoria"})
 public class CategoriaServlet extends HttpServlet {
     
     private Categoria obtenerCategoria(HttpServletRequest request) {
@@ -35,7 +35,7 @@ public class CategoriaServlet extends HttpServlet {
             ArrayList<Categoria> categorias =  CategoriaDAL.buscar(categoria);
             request.setAttribute("categorias", categorias);
             request.setAttribute("top_aux", categoria.getTop_aux());             
-            request.getRequestDispatcher("Views/Autor/index.jsp").forward(request, response);
+            request.getRequestDispatcher("Views/Categoria/index.jsp").forward(request, response);
         } catch (Exception ex) { Utilidad.enviarError(ex.getMessage(), request, response);}
     }
     
@@ -45,7 +45,7 @@ public class CategoriaServlet extends HttpServlet {
             ArrayList<Categoria> categorias = CategoriaDAL.buscar(categoria);
             request.setAttribute("categoria", categorias);
             request.setAttribute("top_aux", categoria.getTop_aux());
-            request.getRequestDispatcher("Views/Autor/index.jsp").forward(request, response);
+            request.getRequestDispatcher("Views/Categoria/index.jsp").forward(request, response);
         } catch (Exception ex) { 
             Utilidad.enviarError(ex.getMessage(), request, response);
         }
@@ -79,7 +79,7 @@ public class CategoriaServlet extends HttpServlet {
             if (categoria_result.getId() > 0) {
                 request.setAttribute("categoria",  categoria_result);
             } else {
-                Utilidad.enviarError("El Id:" + categoria.getId() + " no existe en la tabla de Editorial", request, response);
+                Utilidad.enviarError("El Id:" + categoria.getId() + " no existe en la tabla de Categoria", request, response);
             }
         } catch (Exception ex) {
             Utilidad.enviarError(ex.getMessage(), request, response);
